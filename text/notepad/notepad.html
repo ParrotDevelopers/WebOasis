@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebOasis - Notepad</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
+    <meta content="Write down quick notes and print a simple text document with Online Notepad editor. It includes spellchecker, word counter, autosave, find and replace etc." name="description">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.1/tinymce.min.js"></script>
+    <link href="css/notepad.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ag">
+        <style>
+            .ON_App {
+                width: 234px;
+                height: 60px
+            }
+            @media(min-width:341px) {
+                .ON_App {
+                    width: 320px;
+                    height: 100px
+                }
+            }
+            @media(min-width:490px) {
+                .ON_App {
+                    width: 468px;
+                    height: 60px
+                }
+            }
+            @media(min-width:750px) {
+                .ON_App {
+                    width: 728px;
+                    height: 90px
+                }
+            }
+            @media(min-width:997px) {
+                .ON_App {
+                    width: 970px;
+                    height: 90px
+                }
+            }
+        </style>
+    <div class="wrapper">
+        <div class="notepad" style="display:block">
+            <div class="titlebar">
+                <h1>WebOasis - Notepad</h1>
+            </div>
+            <div class="tinywrap"><textarea id="editor"></textarea></div><input accept=".txt" class="hidden" id="file_input" type="file">
+        </div>
+    </div>
+    <script src="js/cfg.js"></script>
+</body>
+</html>

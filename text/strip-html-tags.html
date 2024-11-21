@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebOasis - Strip HTML Tags</title>
+  <meta name="description" content="Strips out all HTML tags from a markdown text.">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery.js"></script>
+  <style>
+	@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 300;
+	src: url('fonts/roboto-v20-latin-300.eot'); /* IE9 Compat Modes */
+	src: local('Roboto Light'), local('Roboto-Light'),
+	   url('fonts/roboto-v20-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('fonts/roboto-v20-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+	   url('fonts/roboto-v20-latin-300.woff') format('woff'), /* Modern Browsers */
+	   url('fonts/roboto-v20-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+	   url('fonts/roboto-v20-latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
+	}
+	@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('Roboto'), local('Roboto-Regular'),
+	   url('fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+	   url('fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+	   url('fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	   url('fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+	}
+	@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	src: url('fonts/roboto-v20-latin-500.eot'); /* IE9 Compat Modes */
+	src: local('Roboto Medium'), local('Roboto-Medium'),
+	   url('fonts/roboto-v20-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+	   url('fonts/roboto-v20-latin-500.woff') format('woff'), /* Modern Browsers */
+	   url('fonts/roboto-v20-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+	   url('fonts/roboto-v20-latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
+	}
+  </style>
+</head>
+<body>
+  <section class="navbar">
+    <div class="nav-wrap"> 
+      <ul>
+        <li><a href="#" id="app_menu" class="tooltipped tooltipped-s" aria-label="Menu"><i class="i-menu font-24"></i></a></li>
+      </ul>
+      <a href="index.html" class="brand"><h1><b>WebOasis Text</b></h1></a>
+		<ul class="right"><a href="https://weboasis.app" class="brand"><h1><b>WebOasis Homepage</b></h1></a></ul>
+    </div>
+  </section>
+  <div class="mask"></div>
+  <nav id="nav-menu" class="clear">
+    <ul class="accordion">
+      <li class="title">WebOasis</li>
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Basic Tools</a>
+        <ul>
+          <li><a href="sort-text.html"><i class="i-sort"></i>Sort Text</a></li>
+          <li><a href="convert-case.html"><i class="i-case"></i>Convert Case</a></li>
+          <li><a href="find-and-replace.html"><i class="i-find_replace"></i>Find & Replace</a></li>
+          <li><a href="reverse-list.html"><i class="i-reverse_list"></i>Reverse List</a></li>
+          <li><a href="difference-checker.html"><i class="i-compare"></i>Difference Checker</a></li>
+          <li><a href="word-count.html"><i class="i-word_count"></i>Word Count</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Text Manipulation</a>
+        <ul>
+          <li><a href="add-prefix-suffix.html"><i class="i-prefix"></i>Add Prefix & Suffix</a></li>
+          <li><a href="add-line-breaks.html"><i class="i-linebreak"></i>Add Line Breaks</a></li>
+          <li><a href="remove-line-breaks.html"><i class="i-remove"></i>Remove Line Breaks</a></li>
+          <li><a href="concatenate-text.html"><i class="i-combine"></i>Concatenate Text</a></li>
+          <li><a href="split-text.html"><i class="i-split i-rotate-90"></i>Split Text</a></li>
+          <li><a href="extract-column.html"><i class="i-column"></i>Extract Column</a></li>
+          <li><a href="swap-columns.html"><i class="i-swap"></i>Swap Columns</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Clean Text</a>
+        <ul>
+          <li><a href="remove-spaces.html"><i class="i-extra_space"></i>Remove Spaces</a></li>
+          <li><a href="remove-duplicate-lines.html"><i class="i-format"></i>Remove Duplicate Lines</a></li>
+          <li><a href="remove-empty-lines.html"><i class="i-line_space"></i>Remove Empty Lines</a></li>
+          <li><a href="remove-diacritics.html"><i class="i-remove"></i>Remove Diacritics</a></li>
+          <li><a href="remove-unwanted-characters.html"><i class="i-chars"></i>Remove Unwanted Characters</a></li>
+          <li><a href="strip-html-tags.html"><i class="i-code"></i>Strip HTML Tags</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Formatting</a>
+        <ul>
+          <li><a href="add-line-numbers.html"><i class="i-line_numbers"></i>Add Line Numbers</a></li>
+          <li><a href="add-commas-to-numbers.html"><i class="i-abc i-commafy">1,234</i>Add Commas to Numbers</a></li>
+          <li><a href="replace-smart-straight-quotes.html"><i class="i-quote"></i>Replace Smart/Straight Quotes</a></li>
+          <li><a href="tabs-to-spaces.html"><i class="i-tab"></i>Tabs to Spaces</a></li>
+          <li><a href="spaces-to-tabs.html"><i class="i-space"></i>Spaces to Tabs</a></li>
+          <li><a href="pad-text.html"><i class="i-pad"></i>Pad Text</a></li>
+          <li><a href="word-wrap.html"><i class="i-wrap"></i>Word Wrap</a></li>
+          <li><a href="justify-text.html"><i class="i-justify"></i>Justify Text</a></li>
+          <li><a href="center-text.html"><i class="i-center"></i>Center Text</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Transform Text</a>
+        <ul>
+          <li><a href="reverse-letters.html"><i class="i-abc i-revtext">cba</i>Reverse Letters</a></li>
+          <li><a href="reverse-words.html"><i class="i-swap"></i>Reverse Words</a></li>
+          <li><a href="upside-down-text.html"><i class="i-abc i-flip i-rotate-180">abc</i>Upside Down Text</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Generators</a>
+        <ul>
+          <li><a href="password-generator.html"><i class="i-lock"></i>Password Generator</a></li>
+          <li><a href="filler-text.html"><i class="i-format"></i>Filler Text</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">More Tools</a>
+        <ul>
+          <li><a href="notepad"><i class="i-notepad"></i>Online Notepad</a></li>
+		  <li><a href="cleaner"><i class="i-notepad"></i>Text Cleaner</a></li>
+		  <li><a href="base64"><i class="i-notepad"></i>Base64</a></li>
+		  <li><a href="url"><i class="i-notepad"></i>URL</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <main class="wrapper padding-y">
+    <div class="widget w-100">
+      <header class="widget-header">
+        <h1>Strip HTML Tags</h1>
+      </header>
+      <hr>
+      <div class="widget-body">
+        <div class="clear">
+          <div class="left hidden-xs-down">
+            <div class="dropdown">
+              <button type="button" class="btn btn-sm dropdown-trigger">File</button>
+              <div class="dropdown-menu">
+                <a href="#" id="file_new"><i class="i-file"></i> New</a>
+                <span class="file-button">
+                  <input type="file" id="file_upload" accept=".txt">
+                  <label for="file_upload"><i class="i-folder"></i> Open...</label>
+                </span>
+                <a id="file_download"><i class="i-save"></i> Save As...</a>
+                <hr>
+                <a href="#" id="file_print"><i class="i-print"></i> Print</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button type="button" class="btn btn-sm dropdown-trigger">Edit</button>
+              <div class="dropdown-menu">
+                <a href="#" id="edit_undo"><i class="i-undo"></i> Undo</a>
+                <a href="#" id="edit_redo"><i class="i-redo"></i> Redo</a>
+                <hr>
+                <a href="#" id="edit_copy"><i class="i-copy"></i> Copy</a>
+                <a href="#" id="edit_delete"><i class="i-close"></i> Delete</a>
+                <a href="#" id="edit_select"><i class="i-select_all"></i> Select All</a>
+              </div>
+            </div>
+          </div>
+          <div class="right xs-100">
+            <span class="switch left">
+              <input type="checkbox" id="isTrim" checked>
+              <label for="isTrim">Clean</label>
+            </span>
+          </div>
+        </div>
+<style>
+#input_output{height:522px}
+
+@media (max-width: 768px){
+  #input_output{height:400px}
+}
+@media (max-width: 414px){
+  #input_output{height:552px}
+}
+@media (max-width: 412px){
+  #input_output{height:547px}
+}
+@media (max-width: 384px){
+  #input_output{height:456px}
+}
+@media (max-width: 375px){
+  #input_output{height:483px}
+}
+@media (max-width: 360px){
+  #input_output{height:456px}
+}
+@media (max-width: 320px){
+  #input_output{height:384px}
+}
+</style>
+        <div id="main">
+          <textarea id="input_output"></textarea>
+          <div class="clipboard"><span class="tooltipped tooltipped-n" aria-label="Click to copy"><i class="i-copy" ></i></span></div>
+        </div>
+        <div class="clear">
+          <div class="right xs-100 xs-left">
+            <button id="stripTags" type="button" class="btn btn-sm xs-50 xs-left">Strip</button>
+            <button id="clearAll" type="button" class="btn btn-sm btn-light xs-50 xs-left">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear w-100 margin-y">
+      <article class="widget wm-100 center box-content">
+        <header class="widget-header">
+          <h4>About</h4>
+        </header>
+        <hr>
+        <p>Use this tool to strip out all HTML tags from a markdown text. The result will be a clean plain text that you can easily copy-paste to a word document or anywhere else. Strip HTML Tags tool is safe to use. It can detect legitimate greater than (>) and less than symbols (<) and will only delete HTML tags. Other HTML remover tools that you find online assume that the text will be strictly HTML and therefore, all unencoded brackets will be identified as a tag. For example, they would clean the text <code>a1 < b1 and c1 > d1</code> into <code>a1 d1</code>.</p>
+        <header class="widget-header">
+          <h3>Clean Text</h3>
+        </header>
+        <hr>
+        <p>This is enabled by default. What it does is remove empty lines so you're only left with plain block of text without any extra vertical whitespaces.</p>
+      </article>
+    </div>
+  <div class="toast" role="alert"><div class="toast-content"></div></div>
+  </main>
+  <br>
+  <footer class="clear font-14">
+    <div class="wrapper">
+      <div class="center">© WebOasis - Text</div>
+    </div>
+  </footer>
+  <script src="js/site.js"></script>
+  <script src="js/strip-html-tags.js"></script>
+  <script>
+    $('body').ready(function() {
+      $('.accordion > li:eq(4) > a').addClass('active').next().show();
+    });
+  </script>
+</body>
+</html>

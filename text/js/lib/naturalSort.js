@@ -1,0 +1,5 @@
+/*
+ * Natural Sort algorithm for Javascript - Version 0.7 - Released under MIT license
+ * Author: Jim Palmer (based on chunking idea from Dave Koelle)
+ */
+function naturalSort(e,a){"use strict";var r,t,n=/(^([+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?)?$|^0x[0-9a-f]+$|\d+)/gi,i=/(^[ ]*|[ ]*$)/g,l=/(^([\w ]+,?[\w ]+)?[\w ]+,?[\w ]+\d+:\d+(:\d+)?[\w ]?|^\d{1,4}[\/\-]\d{1,4}[\/\-]\d{1,4}|^\w+, \w+ \d+, \d{4})/,p=/^0x[0-9a-f]+$/i,c=/^0/,s=function(e){return naturalSort.insensitive&&(""+e).toLowerCase()||""+e},f=s(e).replace(i,"")||"",u=s(a).replace(i,"")||"",d=f.replace(n,"\0$1\0").replace(/\0$/,"").replace(/^\0/,"").split("\0"),o=u.replace(n,"\0$1\0").replace(/\0$/,"").replace(/^\0/,"").split("\0"),h=parseInt(f.match(p),16)||1!==d.length&&f.match(l)&&Date.parse(f),w=parseInt(u.match(p),16)||h&&u.match(l)&&Date.parse(u)||null;if(w){if(h<w)return-1;if(h>w)return 1}for(var $=0,m=Math.max(d.length,o.length);$<m;$++){if(r=!(d[$]||"").match(c)&&parseFloat(d[$])||d[$]||0,t=!(o[$]||"").match(c)&&parseFloat(o[$])||o[$]||0,isNaN(r)!==isNaN(t))return isNaN(r)?1:-1;if(typeof r!=typeof t&&(r+="",t+=""),r<t)return-1;if(r>t)return 1}return 0}

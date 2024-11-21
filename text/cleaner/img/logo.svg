@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+      }
+    </style>
+  </defs>
+  <g id="logo4" transform="translate(0 0.5)" shape-rendering="crispEdges">
+    <line id="Line_6" data-name="Line 6" class="cls-1" x2="10.182" transform="translate(0 16)"/>
+    <line id="Line_5" data-name="Line 5" class="cls-1" x2="16" transform="translate(0 12.8)"/>
+    <line id="Line_4" data-name="Line 4" class="cls-1" x2="10.182" transform="translate(0 9.6)"/>
+    <line id="Line_3" data-name="Line 3" class="cls-1" x2="16" transform="translate(0 6.4)"/>
+    <line id="Line_2" data-name="Line 2" class="cls-1" x2="10.182" transform="translate(0 3.2)"/>
+    <line id="Line_1" data-name="Line 1" class="cls-1" x2="16"/>
+  </g>
+</svg>

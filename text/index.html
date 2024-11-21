@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebOasis - Text</title>
+  <meta name="description" content="Tools that will help you automate manipulating and formatting text.">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery.js"></script>
+  <style>
+	@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 300;
+	src: url('fonts/roboto-v20-latin-300.eot'); /* IE9 Compat Modes */
+	src: local('Roboto Light'), local('Roboto-Light'),
+	   url('fonts/roboto-v20-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('fonts/roboto-v20-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+	   url('fonts/roboto-v20-latin-300.woff') format('woff'), /* Modern Browsers */
+	   url('fonts/roboto-v20-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+	   url('fonts/roboto-v20-latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
+	}
+	@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('Roboto'), local('Roboto-Regular'),
+	   url('fonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+	   url('fonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+	   url('fonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	   url('fonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+	}
+	@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	src: url('fonts/roboto-v20-latin-500.eot'); /* IE9 Compat Modes */
+	src: local('Roboto Medium'), local('Roboto-Medium'),
+	   url('fonts/roboto-v20-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	   url('fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+	   url('fonts/roboto-v20-latin-500.woff') format('woff'), /* Modern Browsers */
+	   url('fonts/roboto-v20-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+	   url('fonts/roboto-v20-latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
+	}
+</style>
+</head>
+<body>
+  <section class="navbar">
+    <div class="wrapper"> 
+      <a href="index.html" class="brand"><h1><b>WebOasis Text</b></h1></a>
+		<ul class="right"><a href="https://weboasis.app" class="brand"><h1><b>WebOasis Homepage</b></h1></a></ul>
+    </div>
+  </section>
+  <div class="jumbotron">
+    <div class="wrapper padding">
+      <p class="font-15">This is a collection of web apps to help you modify and edit text easily in your browser.</p>
+    </div>
+  </div>
+  <style>
+  .tt_lb {width:320px;height:100px}
+  @media(min-width: 488px) {.tt_lb{width:468px;height:100px}}
+  @media(min-width: 748px) {.tt_lb{width:728px;height:100px}}
+  @media(min-width:990px) {.tt_lb{width:970px;height:90px}}
+  </style>
+  <aside class="wrapper submenu clear hidden-sm-down">
+    <div class="w-70 left spacer-r">
+      <div class="search-box">
+        <div class="input-icon input-icon-lg">
+          <i class="i-search"></i>
+          <input id="live-search" class="input-lg w-100 text-light" type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+    <div class="w-30 right spacer-l">
+      <select id="categories" class="input-lg w-100 text-light">
+        <option value="tag_all">All Tools</option>
+        <option value="tag_1">Basic Tools</option>
+        <option value="tag_2">Text Manipulation</option>
+        <option value="tag_3">Clean Text</option>
+        <option value="tag_4">Text Formatting</option>
+        <option value="tag_5">Transform Text</option>
+        <option value="tag_6">Generators</option>
+        <option value="tag_7">More Tools</option>
+      </select>
+    </div>
+  </aside>
+  <main class="wrapper clear">
+    <div class="app-group">
+      <div class="category tag_1">
+        <h4>Basic Tools</h4>
+        <ul class="live-list clear">
+          <a href="sort-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#2196f3"><img src="img/thumbnails/sort.png"></div>
+                <div class="app-desc">
+                  <h3>Sort Text</h3>
+                  <p>Sort a list in alphabetical, natural, reverse or random order.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="convert-case.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#e91e63"><img src="img/thumbnails/convertcase.png"></div>
+                <div class="app-desc">
+                  <h3>Convert Case</h3>
+                  <p>Change the letter case to uppercase, lowercase, title case, sentence case, or capitalize.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="find-and-replace.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#01579b"><img src="img/thumbnails/findreplace.png"></div>
+                <div class="app-desc">
+                  <h3>Find & Replace</h3>
+                  <p>Find all the instances the text appears in a text and replace it with another word.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="reverse-list.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#81d4fa"><img src="img/thumbnails/reverselist.png"></div>
+                <div class="app-desc">
+                  <h3>Reverse List</h3>
+                  <p>Flip a list vertically to transform a list in reverse order.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="difference-checker.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#4caf50"><img src="img/thumbnails/compare.png"></div>
+                <div class="app-desc">
+                  <h3>Difference Checker</h3>
+                  <p>Compare text files and find the difference between the two.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="https://diffnow.com">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#a2b988"><img src="img/thumbnails/compare.png"></div>
+                <div class="app-desc">
+                  <h3>Difference Checker 2</h3>
+                  <p>Compare text files and find the difference between the two.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="word-count.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#ff9800"><img src="img/thumbnails/wordcount.png"></div>
+                <div class="app-desc">
+                  <h3>Word Count</h3>
+                  <p>Find out how much words, characters, sentences and paragraphs you have written.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="category tag_2">
+        <h4>Text Manipulation</h4>
+        <ul class="live-list clear">
+          <a href="add-prefix-suffix.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#6A1B9A"><img src="img/thumbnails/prefixsuffix.png"></div>
+                <div class="app-desc">
+                  <h3>Add Prefix & Suffix</h3>
+                  <p>Place any character/s at the beginning and/or at the end of each line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="add-line-breaks.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#00bcd4"><img src="img/thumbnails/linebreaks.png"></div>
+                <div class="app-desc">
+                  <h3>Add Line Breaks</h3>
+                  <p>Split a block of text into multiple lines by adding line breaks/new line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="remove-line-breaks.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#ff5252"><img src="img/thumbnails/removelinebreaks.png"></div>
+                <div class="app-desc">
+                  <h3>Remove Line Breaks</h3>
+                  <p>Remove all line breaks in a text  or replace it with a different character.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="concatenate-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#039BE5"><img src="img/thumbnails/combine.png"></div>
+                <div class="app-desc">
+                  <h3>Concatenate Text</h3>
+                  <p>Combine/merge two documents by concatenating texts line by line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="split-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#2e7d32"><img src="img/thumbnails/split.png"></div>
+                <div class="app-desc">
+                  <h3>Split Text</h3>
+                  <p>Specify the delimiter and split a text into individual columns, or by new line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="extract-column.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#0277bd"><img src="img/thumbnails/column.png"></div>
+                <div class="app-desc">
+                  <h3>Extract Column</h3>
+                  <p>Split a delimited text and grab a specific column.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="swap-columns.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#8BC34A"><img src="img/thumbnails/swap.png"></div>
+                <div class="app-desc">
+                  <h3>Swap Columns</h3>
+                  <p>Swap two columns from a delimited text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="category tag_3">
+        <h4>Clean Text</h4>
+        <ul class="live-list clear">
+          <a href="remove-spaces.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#ffc107"><img src="img/thumbnails/space.png"></div>
+                <div class="app-desc">
+                  <h3>Remove Spaces</h3>
+                  <p>Trim leading and trailing spaces and convert multiple spaces into a single space.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="remove-duplicate-lines.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#f06292"><img src="img/thumbnails/duplicate.png"></div>
+                <div class="app-desc">
+                  <h3>Remove Duplicate Lines</h3>
+                  <p>Find indentical lines in a document and delete duplicates to clean up your text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="remove-empty-lines.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#0091ea"><img src="img/thumbnails/emptylines.png"></div>
+                <div class="app-desc">
+                  <h3>Remove Empty Lines</h3>
+                  <p>Get rid of all the lines in a text that only consist of spaces or tabs.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="remove-diacritics.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#8c9eff"><img src="img/thumbnails/accent.png"></div>
+                <div class="app-desc">
+                  <h3>Remove Diacritics</h3>
+                  <p>Remove diacritics to transform accented letters into latin characters.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="remove-unwanted-characters.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#37474F"><img src="img/thumbnails/punctuations.png"></div>
+                <div class="app-desc">
+                  <h3>Remove Unwanted Characters</h3>
+                  <p>Remove specific unwanted characters, or delete all non-alphanumeric from text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="strip-html-tags.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#e65100"><img src="img/thumbnails/html.png"></div>
+                <div class="app-desc">
+                  <h3>Strip HTML Tags</h3>
+                  <p>Strips out all HTML tags from a markdown text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="category tag_4">
+        <h4>Text Formatting</h4>
+        <ul class="live-list clear">
+          <a href="add-line-numbers.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#009688"><img src="img/thumbnails/linenumbers.png"></div>
+                <div class="app-desc">
+                  <h3>Add Line Numbers</h3>
+                  <p>Add sequential numbers, letters, or roman numerals at the beginning of each line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="add-commas-to-numbers.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#7cb342"><img src="img/thumbnails/commafy.png"></div>
+                <div class="app-desc">
+                  <h3>Add Commas to Numbers</h3>
+                  <p>Add commas/periods to unformatted numbers in a text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="replace-smart-straight-quotes.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#283593"><img src="img/thumbnails/quotes.png"></div>
+                <div class="app-desc">
+                  <h3>Replace Smart/Straight Quotes</h3>
+                  <p>Replace curly/smart quotes with regular straight quotes, and vice versa.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="tabs-to-spaces.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#9c27b0"><img src="img/thumbnails/tabs.png"></div>
+                <div class="app-desc">
+                  <h3>Tabs to Spaces</h3>
+                  <p>Take up less white space by converting tabs to spaces.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="spaces-to-tabs.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#1565C0"><img src="img/thumbnails/spacestabs.png"></div>
+                <div class="app-desc">
+                  <h3>Spaces to Tabs</h3>
+                  <p>Convert spaces to tabs for formatting purposes.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="pad-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#AD1457"><img src="img/thumbnails/pad.png"></div>
+                <div class="app-desc">
+                  <h3>Pad Text</h3>
+                  <p>Pad text to the left or right with spaces or any character.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="word-wrap.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#FFC400"><img src="img/thumbnails/wrap.png"></div>
+                <div class="app-desc">
+                  <h3>Word Wrap</h3>
+                  <p>Wrap a text based on specified character length per line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="justify-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#00BCD4"><img src="img/thumbnails/justify.png"></div>
+                <div class="app-desc">
+                  <h3>Justify Text</h3>
+                  <p>Wraps words to a specified length and justifies the text in each line.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="center-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#4fc3f7"><img src="img/thumbnails/centered.png"></div>
+                <div class="app-desc">
+                  <h3>Center Text</h3>
+                  <p>Center text horizontally by equally padding the left and the right side with spaces.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="category tag_5">
+        <h4>Transform Text</h4>
+        <ul class="live-list clear">
+          <a href="reverse-letters.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#03a9f4"><img src="img/thumbnails/reverse-letters.png"></div>
+                <div class="app-desc">
+                  <h3>Reverse Letters</h3>
+                  <p>Reverse the order of letters in a text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="reverse-words.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#f44336"><img src="img/thumbnails/reverse-words.png"></div>
+                <div class="app-desc">
+                  <h3>Reverse Words</h3>
+                  <p>Reverse the order of words in a text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="upside-down-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#E040FB"><img src="img/thumbnails/upsidedown.png"></div>
+                <div class="app-desc">
+                  <h3>Upside Down Text</h3>
+                  <p>Flip text, letters, and words! Turn texts upside down and make them harder to read.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="category tag_6">
+        <h4>Generators</h4>
+        <ul class="live-list clear">
+          <a href="password-generator.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#43A047"><img src="img/thumbnails/password.png"></div>
+                <div class="app-desc">
+                  <h3>Password Generator</h3>
+                  <p>Generate a set of secure password with options to change the length and character set.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="password">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#833362"><img src="img/thumbnails/password.png"></div>
+                <div class="app-desc">
+                  <h3>Password Generator 2</h3>
+                  <p>Generate a set of secure password with options to change the length and character set.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="filler-text.html">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#B0BEC5"><img src="img/thumbnails/filler.png"></div>
+                <div class="app-desc">
+                  <h3>Filler Text</h3>
+                  <p>Generate a placeholder/dummy text for your mockup design.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="category tag_7">
+        <h4>More Tools</h4>
+        <ul class="live-list clear">
+          <a href="notepad">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#00b3fe;"><img src="img/thumbnails/notepad.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">Online Notepad</h3>
+                  <p>A browser-based plain text editor with autosave functionality.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="cleaner">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#1c1c1c"><img src="img/thumbnails/textcleaner.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">Text Cleaner</h3>
+                  <p>An all-in-one text cleaning and formatting tool.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="base64">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#649582"><img src="img/thumbnails/base64.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">Base64 Encode/Decode</h3>
+                  <p>A tool to encode and decode text in base64.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="url">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#D4CD6A"><img src="img/thumbnails/base64.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">URL Encode/Decode</h3>
+                  <p>Tool to encode or decode a link or url.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="https://gchq.github.io/CyberChef/">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#A4DDED"><img src="img/thumbnails/cyberchef.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">CyberChef</h3>
+                  <p>A web app for encryption, encoding, compression and data analysis.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="https://spinbot.com">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#999999"><img src="img/thumbnails/spinbot.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">SpinBot</h3>
+                  <p>Article spinning, text rewriting, content creation tool.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="https://smmry.com">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#ffffff"><img src="img/thumbnails/smmry.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">SMMRY</h3>
+                  <p>Summarize articles, text, websites, essays and documents.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="https://www.textise.net">
+            <li>
+              <div class="app-wrap">
+                <div class="app-img" style="background:#ffffff"><img src="img/thumbnails/textise.png"></div>
+                <div class="app-desc">
+                  <h3 class="margin-0">Textise</h3>
+                  <p>Removes everything from a web page except for its text.</p>
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <br>
+  <footer class="clear font-14">
+    <div class="wrapper">
+      <div class="center">© WebOasis - Text</div>
+    </div>
+  </footer>
+  <script src="js/index.js"></script>
+</body>
+</html>

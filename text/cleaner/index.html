@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebOasis - Text Cleaner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Clean text using Text Cleaner. An all-in-one text cleaning and unformatting tool that can perform many simple and complex text operations.">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#0280cf" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body class="no-transition">
+    <div class="navbar no-select"><a href="index.html" class="brand left">
+            <h1>WebOasis - Text Cleaner</h1>
+        </a><a href="../" class="donate right">Go Back</a></div>
+    <div class="align-center">
+        <style>
+            .tc_top {
+                width: 320px;
+                height: 100px
+            }
+            @media(min-width:748px) {
+                .tc_top {
+                    width: 728px;
+                    height: 90px
+                }
+            }
+        </style>
+    </div>
+    <div class="wrapper">
+        <div class="box clearfix"><span class="switch right"><input type="checkbox" id="isWrap" checked><label for="isWrap">Wrap lines</label></span>
+            <div class="form-group left w-100">
+                <div class="container"><textarea id="input" class="w-100 form-control" style="width:100%;height:320px;font-family:Georgia" placeholder="Copy and paste your text here, change the settings below and click the clean button."></textarea>
+                    <div class="clipboard tooltipped tooltipped-n" aria-label="Copy to clipboard"><i class="oct i-copy"></i></div>
+                </div>
+            </div>
+            <div class="align-center"><button id="clean" class="btn min-wid" type="button">Clean</button> <button id="undo" class="btn btn-light min-wid" type="button">Undo</button></div>
+        </div>
+        <h5 class="text-light uppercase sm-align-center">Settings</h5>
+        <div class="box">
+            <h2>Clean Text</h2>
+            <div class="clearfix">
+                <div class="w-33 md-w-50 sm-w-100 left">
+                    <div class="indent"><b>Whitespace</b>
+                        <div class="checkbox"><input type="checkbox" id="trim_yes"><label for="trim_yes">Trim</label></div>
+                        <div class="checkbox"><input type="checkbox" id="trim_lead"><label for="trim_lead">Remove leading spaces</label></div>
+                        <div class="checkbox"><input type="checkbox" id="trim_trail"><label for="trim_trail">Remove trailing spaces</label></div>
+                        <div class="checkbox"><input type="checkbox" id="spaces_tab"><label for="spaces_tab">Replace <input id="num_st" type="number" class="form-inline" style="width:28px" value="4"> space/s with 1 tab</label></div>
+                        <div class="checkbox"><input type="checkbox" id="tab_spaces"><label for="tab_spaces">Replace 1 tab with <input id="num_ts" type="number" class="form-inline" style="width:28px" value="1"> space/s</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_blank"><label for="del_blank">Remove blank/empty lines</label></div>
+                        <div class="checkbox"><input type="checkbox" id="lb_space"><label for="lb_space">Replace line break with space</label></div>
+                        <div class="checkbox"><input type="checkbox" id="crunch_space"><label for="crunch_space">Multiple spaces to single</label></div>
+                        <div class="checkbox"><input type="checkbox" id="crunch_line"><label for="crunch_line">Multiple blank lines to single</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_lb"><label for="del_lb">Remove all line breaks</label></div>
+                    </div>
+                </div>
+                <div class="w-33 md-w-50 sm-w-100 left">
+                    <div class="indent"><b>Characters</b>
+                        <div class="checkbox"><input type="checkbox" id="del_punc"><label for="del_punc">Remove punctuation marks</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_emj"><label for="del_emj">Strip all emojis</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_dia"><label for="del_dia">Remove letter accents (diacritics)</label></div>
+                        <div class="checkbox"><input type="checkbox" id="normalize_letters"><label for="normalize_letters">Normalize unicode letters/characters</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_unk"><label for="del_unk">Remove replacement character</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_non_ascii"><label for="del_non_ascii">Remove non-ASCII characters</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_non_alphanum"><label for="del_non_alphanum">Remove non-alphanumeric characters</label></div>
+                    </div>
+                    <div class="indent"><b>Other</b>
+                        <div class="checkbox"><input type="checkbox" id="del_mail"><label for="del_mail">Strip all e-mails</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_bbcode"><label for="del_bbcode">Remove BBCode tags (Forum)</label></div>
+                    </div>
+                </div>
+                <div class="w-33 md-w-50 sm-w-100 left">
+                    <div class="indent"><b>HTML</b>
+                        <div class="checkbox"><input type="checkbox" id="unescape_html"><label for="unescape_html">Unescape HTML tags</label></div>
+                        <div class="checkbox"><input type="checkbox" id="strip_html"><label for="strip_html">Strip all HTML tags</label></div>
+                        <div class="checkbox"><input type="checkbox" id="strip_id"><label for="strip_id">Remove all ids</label></div>
+                        <div class="checkbox"><input type="checkbox" id="strip_class"><label for="strip_class">Remove all classes</label></div>
+                        <div class="checkbox"><input type="checkbox" id="strip_style"><label for="strip_style">Remove inline styles</label></div>
+                        <div class="checkbox"><input type="checkbox" id="decode_entities"><label for="decode_entities">Decode HTML Character Entities</label></div>
+                        <div class="checkbox"><input type="checkbox" id="decode_uri"><label for="decode_uri">Decode URL-encoded characters</label></div>
+                    </div>
+                    <div class="indent"><b>Links</b>
+                        <div class="grouped">
+                            <div class="checkbox"><input type="checkbox" id="del_url"><label for="del_url">Remove all web urls</label></div>
+                            <div class="checkbox"><input type="checkbox" id="urls_links"><label for="urls_links">Convert urls to links</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <h3>Text Formatting</h3>
+            <div class="clearfix">
+                <div class="w-33 md-w-50 sm-w-100 left">
+                    <div class="indent"><b>Letter case</b>
+                        <div class="radio"><input type="radio" name="letter_case" id="case_upper"><label for="case_upper">Uppercase</label></div>
+                        <div class="radio"><input type="radio" name="letter_case" id="case_lower"><label for="case_lower">Lowercase</label></div>
+                        <div class="radio"><input type="radio" name="letter_case" id="case_sentence"><label for="case_sentence">Sentence case</label></div>
+                        <div class="radio"><input type="radio" name="letter_case" id="case_capitalize"><label for="case_capitalize">Capitalize each word</label></div>
+                        <div class="radio"><input type="radio" name="letter_case" id="case_none" checked><label for="case_none">Do not change</label></div>
+                    </div>
+                    <div class="indent"><b>Quotes</b>
+                        <div class="grouped">
+                            <div class="checkbox"><input type="checkbox" name="quote_marks" id="curly_straight"><label for="curly_straight">Smart quotes to regular</label></div>
+                            <div class="checkbox"><input type="checkbox" name="quote_marks" id="straight_curly"><label for="straight_curly">Regular quotes to smart</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-33 md-w-50 sm-w-100 left">
+                    <div class="indent"><b>Duplicates</b>
+                        <div class="checkbox"><input type="checkbox" id="del_dup_lines"><label for="del_dup_lines">Remove duplicate lines/paragraphs</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_rep_words"><label for="del_rep_words">Remove repeating words</label></div>
+                    </div>
+                    <div class="indent"><b>Trim</b>
+                        <div class="checkbox"><input type="checkbox" id="del_char_left"><label for="del_char_left">Remove <input id="num_trim_left" type="number" class="form-inline" style="width:28px" value="3"> characters from left</label></div>
+                        <div class="checkbox"><input type="checkbox" id="del_char_right"><label for="del_char_right">Remove <input id="num_trim_right" type="number" class="form-inline" style="width:28px" value="3"> characters from right</label></div>
+                    </div>
+                    <div class="indent"><b>Writing</b>
+                        <div class="checkbox"><input type="checkbox" id="fix_punc_space"><label for="fix_punc_space">Fix spaces after each punctuation mark</label></div>
+                        <div class="checkbox"><input type="checkbox" id="text_short"><label for="text_short">Convert common shorthand to full words</label></div>
+                    </div>
+                </div>
+                <div class="w-33 md-w-100 left">
+                    <div class="align-center">
+                        <style>
+                            .tc_box {
+                                width: 300px;
+                                height: 250px
+                            }
+
+                            @media(min-width:401px) {
+                                .tc_box {
+                                    width: 336px;
+                                    height: 280px
+                                }
+                            }
+
+                            @media(min-width:1001px) {
+                                .tc_box {
+                                    width: 300px;
+                                    height: 250px
+                                }
+                            }
+
+                            @media(min-width:1110px) {
+                                .tc_box {
+                                    width: 336px;
+                                    height: 280px
+                                }
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div><br>
+            <div class="form-group controls align-center"><span>Select: </span><a id="select_all">All</a> | <a id="select_none">None</a> | <a id="select_default">Default</a></div>
+            <h3>Find and Replace</h3>
+            <style type="text/css">
+                #fnr_body tr>td:nth-child(odd) {
+                    width: 50%
+                }
+            </style>
+            <table class="table-striped w-100">
+                <tbody id="fnr_body"></tbody>
+            </table>
+            <div class="align-center"><button class="btn" type="button" id="fnr_add"><i class="oct i-plus"></i></button></div>
+        </div>
+        <h5 class="text-light uppercase sm-align-center">About</h5>
+        <div class="box">
+            <h3>What is Text Cleaner?</h3>
+            <p>Text Cleaner is an all-in-one text cleaning and formatting tool that can perform many complex text operations. It can remove unnecessary spaces and unwanted characters. It can also change letter case, convert typography quotes, delete duplicate lines/paragraphs and words, convert bold and italic unicode letters into regular letters, fix spacing between punctuations, remove letter accents, decode character entity codes, unescape and strip HTML tags, convert urls to links, and more. With this, you can also create your very own "find and replace" list.</p>
+            <p>It's highly-customizable. You can tweak the settings based on your personal preference. Your custom configuration is automatically saved in your browser, so you don't have to completely redo your settings on your next visit.</p>
+            <p>The main purpose of this utility is to unformat a formatted text and remove all unmeaningful characters which are often present in texts that were copied directly from word processors, web pages, PDFs, client briefs, and e-mails. I originally made this tool for my first data entry job and it made my work easier. I hope you find it useful too. This web app is free to use for any individual, company, office or organization for research, development, and/or commercial purposes. Please back up your data accordingly. We will not be held legally liable for any data loss which may occur while performing work on your computer.</p>
+            <h3>How to use?</h3>
+            <p>Simply copy and paste your text in the input box, configure the settings below by checking/unchecking the boxes and click the clean button. The cleaned version of your text shoulded appear in the result box. Not expecting the result you wanted? No worries, you can go back and click the input tab and from there you can start from the top. Hitting the reset button will clear both fields.</p>
+        </div>
+    </div>
+    <div class="toast">
+        <div class="toast-content"></div>
+    </div>
+    <div class="align-center pad-1">
+        <div>© WebOasis - Text Cleaner</div>
+        <div class="font-14"><a href="#">Back To Top</a></div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/modules/diacritics.js"></script>
+    <script src="js/modules/shorthands.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

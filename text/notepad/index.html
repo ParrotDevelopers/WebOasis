@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebOasis - Notepad</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write down quick notes and print a simple text document with Online Notepad editor. It includes spellchecker, word counter, autosave, find and replace etc.">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/app-new.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <div class="navbar"> <a href="#" id="nav-btn"><i class="i-menu"></i></a> <a href="index.html" class="brand">
+            <h1>WebOasis - Notepad</h1>
+        </a></div>
+    <div class="container">
+        <div class="mask"></div>
+        <div class="sidebar">
+            <div class="create"> <button id="new_btn" class="btn btn-lg" title="Create a new note">+ Create new</button></div>
+            <div class="search"> <i class="i-find"></i> <input type="text" id="n_search" class="search" placeholder="Search..." spellcheck="false"></div>
+            <div class="settings">
+                <ul class="menu more left">
+                    <li><a href="#" title="Sort notes"><i class="i-sort"></i></a>
+                        <ul>
+                            <li><a id="sortAZ" href="#"><i class=""></i> Alphabetical</a></li>
+                            <li><a id="sortNone" href="#"><i class="i-check"></i> Creation date</a></li>
+                            <li><a id="sortDate" href="#"><i class=""></i> Last modified</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="menu more right">
+                    <li><a href="#" title="Settings"><i class="i-ellipsis_v"></i></a>
+                        <ul>
+                            <li><a id="view_compact" href="#" id=""><i class="i-"></i> Compact View</a></li>
+                            <li><a id="view_all" href="#" id=""><i class="i-check"></i> Detailed View</a></li>
+                            <hr>
+                            <li><a id="backup_btn" href="#"><i class="i-download"></i> Backup</a></li>
+                            <li><a id="clear_btn" href="#"><i class="i-close"></i> Clear</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="saved-notes">
+                <ul class="notes"></ul>
+            </div>
+        </div>
+        <div class="editor">
+            <div class="editor-menu">
+                <ul class="menu">
+                    <li><a href="#">File</a>
+                        <ul>
+                            <li><a id="file_new" href="#"><i class="i-new"></i> New</a></li>
+                            <li> <input type="file" id="file_open" accept="text/plain" class="none"> <label for="file_open"><i class="i-open"></i> Open</label></li>
+                            <li><a id="file_save" href="#"><i class="i-save"></i> Save</a></li>
+                            <li><a id="file_download" href="#"><i class="i-download"></i> Save As</a></li>
+                            <hr>
+                            <li><a id="file_print" href="#"><i class="i-print"></i> Print</a></li>
+                        </ul>
+                    </li>
+                    <li class="stay-focus"><a href="#">Edit</a>
+                        <ul class="edit_btns">
+                            <li><a id="edit_undo" href="#"><i class="i-undo"></i> Undo</a></li>
+                            <li><a id="edit_redo" href="#"><i class="i-redo"></i> Redo</a></li>
+                            <hr>
+                            <li><a id="edit_cut" href="#"><i class="i-cut"></i> Cut</a></li>
+                            <li><a id="edit_copy" href="#"><i class="i-copy"></i> Copy</a></li>
+                            <li><a id="edit_del" href="#"><i class="i-close"></i> Delete</a></li>
+                            <li><a id="edit_sel" href="#"><i class="i-select"></i> Select All</a></li>
+                            <hr>
+                            <li><a id="edit_fnr" href="#"><i class="i-find"></i> Find & Replace</a></li>
+                        </ul>
+                    </li>
+                    <li class="stay-focus"><a href="#">Insert</a>
+                        <ul>
+                            <li><a id="ins_time" href="#"><i class="i-time"></i> Date/Time</a></li>
+                            <li><a id="ins_char" href="#"><i class="i-symbol"></i> Characters</a></li>
+                            <li><a id="ins_emo" href="#"><i class="i-emoji"></i> Emojis</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Format</a>
+                        <ul>
+                            <li><a id="isWrap" href="#"><i class="i-check"></i> Word Wrap</a></li>
+                            <li><a id="font_btn" href="#"><i class="i-format"></i> Font</a></li>
+                        </ul>
+                    </li>
+                    <li class="m-none"><a href="#">Tools</a>
+                        <ul>
+                            <li><a href="#" id="isSpell"><i class="i-check"></i> Spellcheck</a></li>
+                        </ul>
+                    </li>
+                    <li class="md-none"><a href="#">View</a>
+                        <ul>
+                            <li><a href="#" id="isStatus"><i class="i-check"></i> Status Bar</a></li>
+                            <li><a href="#" class="fullscreen_btn"><i id="winCheck" class=""></i> Full Screen</a></li>
+                        </ul>
+                    </li>
+                    <li class="m-none"><a href="#">Help</a>
+                        <ul>
+                            <li><a href="keyboard-shortcuts.html" target="_blank"><i class="i-keyboard"></i> Shortcuts</a></li>
+                            <hr>
+                            <li><a id="about_btn" href="#"><i class="i-info"></i> About</a></li>
+                        </ul>
+                    </li> <a href="#" title="Fullscreen mode" class="fullscreen_btn right md-none"><i id="winSize" class="i-fullscreen"></i></a>
+                </ul>
+            </div>
+            <div class="editor-head"> <input id="n_title" placeholder="Untitled Note" spellcheck="false"> <a href="#" id="del_btn" title="Delete"><i class="i-bin"></i></a></div>
+            <div class="editor-body"> <textarea id="n_text" spellcheck="true"></textarea></div>
+            <div class="editor-footer"> <span id="caretPos" class="left"></span> <span id="wordsNum" class="right">Words: 0</span></div>
+        </div>
+        <div class="adbox"> <a id="hide-sky" href="#"><i class="i-nav_next"></i></a>
+            <div id="sky">
+                <style>
+                    .ON_App {
+                        width: 320px;
+                        height: 100px
+                    }
+
+                    @media(min-width:470px) {
+                        .ON_App {
+                            width: 468px;
+                            height: 100px
+                        }
+                    }
+
+                    @media(min-width:730px) {
+                        .ON_App {
+                            width: 728px;
+                            height: 100px
+                        }
+                    }
+
+                    @media(min-width:752px) {
+                        .ON_App {
+                            width: 750px;
+                            height: 100px
+                        }
+                    }
+
+                    @media(min-width:972px) {
+                        .ON_App {
+                            width: 970px;
+                            height: 100px
+                        }
+                    }
+
+                    @media(min-width:993px) {
+                        .ON_App {
+                            width: 160px;
+                            height: 600px
+                        }
+                    }
+
+                    @media(min-width:1366px) {
+                        .ON_App {
+                            width: 300px;
+                            height: 250px
+                        }
+                    }
+                </style>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="find_replace">
+        <div class="modal-head"> <b>Find and replace</b> <span class="modal-x"><i class="i-close"></i></span></div>
+        <div class="modal-body">
+            <div class="form-group spacer-s"> <label class="w-30">Find this</label><input id="find_box" class="input w-70" value=""></div>
+            <div class="form-group spacer-s"> <label class="w-30">Replace with</label><input id="replace_box" class="input w-70" value=""></div>
+            <div class="clear"> <span class="checkbox w-70 right spacer-s"> <input type="checkbox" id="match_case"> <label for="match_case">Match case</label> </span> <span class="checkbox w-70 right"> <input type="checkbox" id="whole_words"> <label for="whole_words">Whole words</label> </span></div>
+        </div>
+        <div class="modal-foot clear">
+            <div class="right"> <button id="replaceall_btn" class="btn min-wid">Replace</button></div>
+        </div>
+    </div>
+    <div class="modal" id="char_list">
+        <div class="modal-head"> <b>Special Characters</b> <span class="modal-x"><i class="i-close"></i></span></div>
+        <div class="modal-body">
+            <ul class="charlist font-12" style="font-family:sans-serif">
+                <li>¢</li>
+                <li>€</li>
+                <li>£</li>
+                <li>¥</li>
+                <li>©</li>
+                <li>®</li>
+                <li>™</li>
+                <li>‰</li>
+                <li>µ</li>
+                <li>·</li>
+                <li>•</li>
+                <li>…</li>
+                <li>′</li>
+                <li>″</li>
+                <li>§</li>
+                <li>¶</li>
+                <li>ß</li>
+                <li>‹</li>
+                <li>›</li>
+                <li>«</li>
+                <li>»</li>
+                <li>‘</li>
+                <li>’</li>
+                <li>“</li>
+                <li>”</li>
+                <li>‚</li>
+                <li>„</li>
+                <li><</li>
+                <li>></li>
+                <li>≤</li>
+                <li>≥</li>
+                <li>–</li>
+                <li>—</li>
+                <li>¯</li>
+                <li>‾</li>
+                <li>¤</li>
+                <li>¦</li>
+                <li>¨</li>
+                <li>¡</li>
+                <li>¿</li>
+                <li>ˆ</li>
+                <li>˜</li>
+                <li>°</li>
+                <li>−</li>
+                <li>±</li>
+                <li>÷</li>
+                <li>⁄</li>
+                <li>×</li>
+                <li>¹</li>
+                <li>²</li>
+                <li>³</li>
+                <li>¼</li>
+                <li>½</li>
+                <li>¾</li>
+                <li>ƒ</li>
+                <li>∫</li>
+                <li>∑</li>
+                <li>∞</li>
+                <li>√</li>
+                <li>∼</li>
+                <li>≅</li>
+                <li>≈</li>
+                <li>≠</li>
+                <li>≡</li>
+                <li>∈</li>
+                <li>∉</li>
+                <li>∋</li>
+                <li>∏</li>
+                <li>∧</li>
+                <li>∨</li>
+                <li>¬</li>
+                <li>∩</li>
+                <li>∪</li>
+                <li>∂</li>
+                <li>∀</li>
+                <li>∃</li>
+                <li>∅</li>
+                <li>∇</li>
+                <li>∗</li>
+                <li>∝</li>
+                <li>∠</li>
+                <li>´</li>
+                <li>¸</li>
+                <li>ª</li>
+                <li>º</li>
+                <li>†</li>
+                <li>‡</li>
+                <li>À</li>
+                <li>Á</li>
+                <li>Â</li>
+                <li>Ã</li>
+                <li>Ä</li>
+                <li>Å</li>
+                <li>Ā</li>
+                <li>Æ</li>
+                <li>Ç</li>
+                <li>È</li>
+                <li>É</li>
+                <li>Ê</li>
+                <li>Ë</li>
+                <li>Ē</li>
+                <li>Ì</li>
+                <li>Í</li>
+                <li>Î</li>
+                <li>Ï</li>
+                <li>Ī</li>
+                <li>Ð</li>
+                <li>Ñ</li>
+                <li>Ò</li>
+                <li>Ó</li>
+                <li>Ô</li>
+                <li>Õ</li>
+                <li>Ö</li>
+                <li>Ø</li>
+                <li>Ō</li>
+                <li>Œ</li>
+                <li>Š</li>
+                <li>Ù</li>
+                <li>Ú</li>
+                <li>Û</li>
+                <li>Ü</li>
+                <li>Ū</li>
+                <li>Ý</li>
+                <li>Ÿ</li>
+                <li>Ȳ</li>
+                <li>Þ</li>
+                <li>à</li>
+                <li>á</li>
+                <li>â</li>
+                <li>ã</li>
+                <li>ä</li>
+                <li>å</li>
+                <li>ā</li>
+                <li>æ</li>
+                <li>ç</li>
+                <li>è</li>
+                <li>é</li>
+                <li>ê</li>
+                <li>ë</li>
+                <li>ē</li>
+                <li>ì</li>
+                <li>í</li>
+                <li>î</li>
+                <li>ï</li>
+                <li>ī</li>
+                <li>ð</li>
+                <li>ñ</li>
+                <li>ò</li>
+                <li>ó</li>
+                <li>ô</li>
+                <li>õ</li>
+                <li>ö</li>
+                <li>ø</li>
+                <li>ō</li>
+                <li>œ</li>
+                <li>š</li>
+                <li>ù</li>
+                <li>ú</li>
+                <li>û</li>
+                <li>ü</li>
+                <li>ū</li>
+                <li>ý</li>
+                <li>þ</li>
+                <li>ÿ</li>
+                <li>ȳ</li>
+                <li>Α</li>
+                <li>Β</li>
+                <li>Γ</li>
+                <li>Δ</li>
+                <li>Ε</li>
+                <li>Ζ</li>
+                <li>Η</li>
+                <li>Θ</li>
+                <li>Ι</li>
+                <li>Κ</li>
+                <li>Λ</li>
+                <li>Μ</li>
+                <li>Ν</li>
+                <li>Ξ</li>
+                <li>Ο</li>
+                <li>Π</li>
+                <li>Ρ</li>
+                <li>Σ</li>
+                <li>Τ</li>
+                <li>Υ</li>
+                <li>Φ</li>
+                <li>Χ</li>
+                <li>Ψ</li>
+                <li>Ω</li>
+                <li>α</li>
+                <li>β</li>
+                <li>γ</li>
+                <li>δ</li>
+                <li>ε</li>
+                <li>ζ</li>
+                <li>η</li>
+                <li>θ</li>
+                <li>ι</li>
+                <li>κ</li>
+                <li>λ</li>
+                <li>μ</li>
+                <li>ν</li>
+                <li>ξ</li>
+                <li>ο</li>
+                <li>π</li>
+                <li>ρ</li>
+                <li>ς</li>
+                <li>σ</li>
+                <li>τ</li>
+                <li>υ</li>
+                <li>φ</li>
+                <li>χ</li>
+                <li>ψ</li>
+                <li>ω</li>
+                <li>ℵ</li>
+                <li>ϖ</li>
+                <li>ℜ</li>
+                <li>ϒ</li>
+                <li>℘</li>
+                <li>ℑ</li>
+                <li>←</li>
+                <li>↑</li>
+                <li>→</li>
+                <li>↓</li>
+                <li>↔</li>
+                <li>↵</li>
+                <li>⇐</li>
+                <li>⇑</li>
+                <li>⇒</li>
+                <li>⇓</li>
+                <li>⇔</li>
+                <li>∴</li>
+                <li>⊂</li>
+                <li>⊃</li>
+                <li>⊄</li>
+                <li>⊆</li>
+                <li>⊇</li>
+                <li>⊕</li>
+                <li>⊗</li>
+                <li>⊥</li>
+                <li>⋅</li>
+                <li>⌈</li>
+                <li>⌉</li>
+                <li>⌊</li>
+                <li>⌋</li>
+                <li>〈</li>
+                <li>〉</li>
+                <li>◊</li>
+                <li>♠</li>
+                <li>♣</li>
+                <li>♥</li>
+                <li>♦</li>
+            </ul>
+        </div>
+        <div class="modal-foot clear">
+            <div class="right"> <button class="ins_char_btn btn min-wid">Insert</button></div>
+        </div>
+    </div>
+    <div class="modal" id="emoji_list">
+        <div class="modal-head"> <b>Emojis</b> <span class="modal-x"><i class="i-close"></i></span></div>
+        <div class="modal-body">
+            <ul class="charlist font-14">
+                <li>😀</li>
+                <li>😁</li>
+                <li>😂</li>
+                <li>🤣</li>
+                <li>😃</li>
+                <li>😄</li>
+                <li>😅</li>
+                <li>😆</li>
+                <li>😉</li>
+                <li>😊</li>
+                <li>😋</li>
+                <li>😎</li>
+                <li>😍</li>
+                <li>😘</li>
+                <li>😗</li>
+                <li>😙</li>
+                <li>😚</li>
+                <li>☺️</li>
+                <li>🙂</li>
+                <li>🤗</li>
+                <li>🤩</li>
+                <li>🤔</li>
+                <li>🤨</li>
+                <li>😐</li>
+                <li>😑</li>
+                <li>😶</li>
+                <li>🙄</li>
+                <li>😏</li>
+                <li>😣</li>
+                <li>😥</li>
+                <li>😮</li>
+                <li>🤐</li>
+                <li>😯</li>
+                <li>😪</li>
+                <li>😫</li>
+                <li>😴</li>
+                <li>😌</li>
+                <li>😛</li>
+                <li>😜</li>
+                <li>😝</li>
+                <li>🤤</li>
+                <li>😒</li>
+                <li>😓</li>
+                <li>😔</li>
+                <li>😕</li>
+                <li>🙃</li>
+                <li>🤑</li>
+                <li>😲</li>
+                <li>☹️</li>
+                <li>🙁</li>
+                <li>😖</li>
+                <li>😞</li>
+                <li>😟</li>
+                <li>😤</li>
+                <li>😢</li>
+                <li>😭</li>
+                <li>😦</li>
+                <li>😧</li>
+                <li>😨</li>
+                <li>😩</li>
+                <li>🤯</li>
+                <li>😬</li>
+                <li>😰</li>
+                <li>😱</li>
+                <li>😳</li>
+                <li>🤪</li>
+                <li>😵</li>
+                <li>😡</li>
+                <li>😠</li>
+                <li>🤬</li>
+                <li>😷</li>
+                <li>🤒</li>
+                <li>🤕</li>
+                <li>🤢</li>
+                <li>🤮</li>
+                <li>🤧</li>
+                <li>😇</li>
+                <li>🤠</li>
+                <li>🤡</li>
+                <li>🤥</li>
+                <li>🤫</li>
+                <li>🤭</li>
+                <li>🧐</li>
+                <li>🤓</li>
+                <li>😈</li>
+                <li>👿</li>
+                <li>👹</li>
+                <li>👺</li>
+                <li>💀</li>
+                <li>👻</li>
+                <li>👽</li>
+                <li>🤖</li>
+                <li>💩</li>
+                <li>😺</li>
+                <li>😸</li>
+                <li>😹</li>
+                <li>😻</li>
+                <li>😼</li>
+                <li>😽</li>
+                <li>🙀</li>
+                <li>😿</li>
+                <li>😾</li>
+            </ul>
+        </div>
+        <div class="modal-foot clear">
+            <div class="right"> <button class="ins_char_btn btn min-wid">Insert</button></div>
+        </div>
+    </div>
+    <div class="modal" id="font_format">
+        <div class="modal-head"> <b>Font</b> <span class="modal-x"><i class="i-close"></i></span></div>
+        <div class="modal-body">
+            <div class="w-100 clear spacer-s">
+                <div class="w-50 left spacer-r"> <label>Font</label> <select id="font_family" class="select w-100" value="" size="5">
+                        <option value="inherit" selected>Default</option>
+                        <option>Arial</option>
+                        <option>Comic Sans MS</option>
+                        <option>Courier New</option>
+                        <option>Georgia</option>
+                        <option>Helvetica</option>
+                        <option>Impact</option>
+                        <option value="Lucida Sans Unicode, Lucida Grande">Lucida</option>
+                        <option>Microsoft Sans Serif</option>
+                        <option value="Palatino Linotype, Palatino">Palatino</option>
+                        <option>Tahoma</option>
+                        <option>Times New Roman</option>
+                        <option>Trebuchet MS</option>
+                        <option>Verdana</option>
+                        <option value="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Ubuntu,Roboto,sans-serif">System font</option>
+						</select></div>
+						<div class="w-50 right spacer-l"> <label>Size</label> <select id="font_size" class="select w-100" value="" size="5">
+                        <option>8pt</option>
+                        <option>9pt</option>
+                        <option>10pt</option>
+                        <option selected>11pt</option>
+                        <option>12pt</option>
+                        <option>14pt</option>
+                        <option>16pt</option>
+                        <option>18pt</option>
+                        <option>20pt</option>
+                        <option>22pt</option>
+                        <option>24pt</option>
+                        <option>30pt</option>
+                        <option>36pt</option>
+                        <option>48pt</option>
+                        <option>60pt</option>
+                        <option>72pt</option>
+                    </select></div>
+            </div>
+            <div class="w-100 clear">
+                <div class="w-33 left spacer-r"> <label>Weight</label> <select id="font_weight" class="select w-100" value="" size="4">
+                        <option value="400" selected>Regular</option>
+                        <option value="700">Bold</option>
+                    </select></div>
+                <div class="w-33 left spacer-l spacer-r"> <label>Style</label> <select id="font_style" class="select w-100" value="" size="4">
+                        <option selected>Normal</option>
+                        <option>Italic</option>
+                    </select></div>
+                <div class="w-33 left spacer-l"> <label>Line space</label> <select id="font_line" class="select w-100" value="" size="4">
+                        <option value="1.25">Single</option>
+                        <option value="1.4">1.15</option>
+                        <option value="1.8" selected>1.5</option>
+                        <option value="2.4">Double</option>
+                    </select></div>
+            </div>
+        </div>
+        <div class="modal-foot clear">
+            <div class="right"> <button id="reset_font" class="btn min-wid">Reset</button></div>
+        </div>
+    </div>
+    <div class="modal" id="about_app">
+        <div class="modal-head"> <b>About</b> <span class="modal-x"><i class="i-close"></i></span></div>
+        <div class="modal-body centered" style="border-bottom:0">
+            <h4>WebOasis - Notepad</h4>
+            <div class="font-12">
+                <p class="">Version 1.0</p><br />
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="confirm">
+        <div class="modal-head"> <b>Confirm</b> <span class="modal-x"><i class="i-close"></i></span></div>
+        <div class="modal-body">
+            <p></p>
+        </div>
+        <div class="modal-foot clear">
+            <div class="right"> <button class="confirm-1 btn min-wid"></button> <button class="confirm-2 btn min-wid"></button></div>
+        </div>
+    </div>
+    <div class="toast" role="alert">
+        <div class="toast-content"></div>
+    </div>
+    <div class="mob-mask"></div>
+    <p id="print" class="none"></p>
+    <script src="js/app-new.js"></script>
+</body>
+</html>

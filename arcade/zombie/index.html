@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebOas.is - Zombie Invasion</title>
+        <link rel="stylesheet" href="css/reset.css" type="text/css">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <link rel="stylesheet" href="css/orientation_utils.css" type="text/css">
+        <link rel="stylesheet" href="css/ios_fullscreen.css" type="text/css">
+        <link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+		<meta name="msapplication-tap-highlight" content="no"/>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/createjs.min.js"></script>
+        <script type="text/javascript" src="js/howler.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </head>
+    <body ondragstart="return false;" ondrop="return false;" >
+	<div style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%"></div>
+          <script>
+            $(document).ready(function(){
+                    var oMain = new CMain({
+                                                check_orientation: true,        //ENABLE/DISABLE CHECKORIENTATION FUNCTION
+                                                fullscreen: true,               //ENABLE/DISABLE FULLSCREEN BUTTON
+                                                audio_enable_on_startup:false,  //ENABLE/DISABLE AUDIO WHEN GAME STARTS 
+                        
+						//Sets lifepoints of the player
+						playerlife : 10,
+ 
+						//Sets damage done (in lifepoints) by:
+						damage_zombie_0 : -1, //Zombie0 damage
+						damage_zombie_1 : -1, //Zombie1 damage
+						damage_zombie_2 : -1, //Zombie2 damage
+						damage_zombie_3 : -2, //Zombie3 damage
+						damage_survivor : 1, //Health points given by survivor
+
+						//Sets lifepoint (in number of taps) of:
+						life_zombie_0 : 1, //Zombie0 life
+						life_zombie_1 : 2, //Zombie1 life
+						life_zombie_2 : 3, //Zombie2 life
+						life_zombie_3 : 2, //Zombie3 life
+						life_survivor : 1, //Survivor life
+
+						//Sets score earned by each kill (reverted for survivor):
+						score_zombie_0 : 100, //Zombie0 score
+						score_zombie_1 : 200, //Zombie1 score
+						score_zombie_2 : 400, //Zombie2 score
+						score_zombie_3 : 800, //Zombie3 score
+						score_survivor : -800, //Survivor score
+
+						
+						start_spawn_time : 2000, //Starting time (in ms) spawn of a zombie/survivor (limited to 500)
+						spawn_time_decrease: 50, //Time (in ms) that will subtract to the start_spawn_time each WAVE 
+						stage_start_time: 10000, //Starting time duration (in ms) of a WAVE (not limited)
+						stage_time_increase: 1000, //Time (in ms) that will added at stage_start_time each WAVE
+
+						//Number of simultaneous zombie spawn. This array is ordered by WAVE sequence. It's not limited in number of spawn, nor in number of array elements. Adding more elements, you will add more different WAVES. Subsequent WAVES > of this array length, will use last element forever.  
+						max_spawn_onstages:[1, //WAVE 1
+											2, //WAVE 2
+											2, //WAVE 3
+											2, //WAVE 4
+											2, //WAVE 5
+											2, //WAVE 6
+											2, //WAVE 7
+											2, //WAVE 8
+											2, //WAVE 9
+											3],//WAVE 10 
+
+						//Zombie probability spawn in percentage. The Array is ordered by zombie type. E.g. Index 0 mean zombie0 and so on... If a zombie-type rate is not specified, will have 0 chance of spawn.
+						zombie_rate_onstage_0: [100], //WAVE 1
+						zombie_rate_onstage_1: [80,20], //WAVE2
+                        			zombie_rate_onstage_2: [40,50,10], //WAVE3
+						zombie_rate_onstage_3: [40,40,20], //WAVE4
+						zombie_rate_onstage_4: [35,40,25], //WAVE5
+						zombie_rate_onstage_5: [35,35,25,5], //WAVE6
+						zombie_rate_onstage_6: [20,25,35,20],//WAVE7
+						zombie_rate_onstage_7: [15,20,35,30], //WAVE8
+						//From WAVE 8 occurences are fixed
+
+						survivor_rate_onstages: [0,0,5,10,15,20,25,30], //Survivor probability spawn each stage. Index of array mean WAVE.
+                                                
+                                                ////////////////////////////////////////////////////////////////////////////////////////// 
+                                                ad_show_counter: 5 //NUMBER OF WAVE PLAYED BEFORE AD SHOWING 
+                                                // 
+                                                //// THIS FEATURE  IS ACTIVATED ONLY WITH CTL ARCADE PLUGIN./////////////////////////// 
+                                                /////////////////// YOU CAN GET IT AT: ///////////////////////////////////////////////////////// 
+                                                // http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421///////////
+
+                                                
+
+                    });
+                                           
+                                           
+                    $(oMain).on("start_session", function(evt) {
+                            if(getParamValue('ctl-arcade') === "true"){
+                                parent.__ctlArcadeStartSession();
+                            }
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+                     
+                    $(oMain).on("end_session", function(evt) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeEndSession();
+                           }
+                           //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+
+                    $(oMain).on("save_score", function(evt,iScore) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeSaveScore({score:iScore});
+                           }
+                           //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+
+                    $(oMain).on("start_level", function(evt, iLevel) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeStartLevel({level:iLevel});
+                           }
+                           //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+
+                    $(oMain).on("end_level", function(evt,iLevel) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeEndLevel({level:iLevel});
+                           }
+                           //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+
+                    $(oMain).on("show_interlevel_ad", function(evt) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeShowInterlevelAD();
+                           }
+                           //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+                    
+                    $(oMain).on("share_event", function(evt, iScore) {
+                           if(getParamValue('ctl-arcade') === "true"){
+                               parent.__ctlArcadeShareEvent({   img: TEXT_SHARE_IMAGE,
+                                                                title: TEXT_SHARE_TITLE,
+                                                                msg: TEXT_SHARE_MSG1 + iScore + TEXT_SHARE_MSG2,
+                                                                msg_share: TEXT_SHARE_SHARE1 + iScore + TEXT_SHARE_SHARE1});
+                           }
+                           //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+                     
+                    if(isIOS()){ 
+                        setTimeout(function(){sizeHandler();},200); 
+                    }else{
+                        sizeHandler(); 
+                    }
+           });
+
+        </script>
+        <div class="check-fonts">
+            <p class="check-font-1">ZombieA</p>
+        </div> 
+        <canvas id="canvas" class='ani_hack' width="1136" height="832"> </canvas>
+        <div data-orientation="landscape" class="orientation-msg-container"><p class="orientation-msg-text">Please rotate your device</p></div>
+        <div id="block_game" style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%; display:none"></div>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+root { 
+    display: block;
+}
+
+body{
+    background-color: #000;
+    background-repeat: repeat-x;
+    background-position: top;  
+}
+
+*, *:before, *:after {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+     
+input, input:before, input:after {
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+
+::selection { background: transparent;color:inherit; }
+::-moz-selection { background: transparent;color:inherit; }
+
+#canvas{
+    position: fixed;
+    opacity: 1;
+}
+
+canvas {
+    image-rendering: optimizeSpeed;
+    image-rendering:-o-crisp-edges;
+    image-rendering:-webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+	-ms-touch-action: none;
+}
+
+.ani_hack{
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* mobile webkit */
+}
+
+/***************FONTS*******************/
+@font-face {
+    font-family: 'space_comics';
+    src: url('space_comics-webfont.eot');
+    src: url('space_comics-webfont.eot?#iefix') format('embedded-opentype'),
+         url('space_comics-webfont.woff2') format('woff2'),
+         url('space_comics-webfont.woff') format('woff'),
+         url('space_comics-webfont.ttf') format('truetype'),
+         url('space_comics-webfont.svg#space_comics') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.check-fonts{
+        position: fixed;
+        opacity:0;
+}
+
+.check-font-1{
+        font-family: 'space_comics';
+}

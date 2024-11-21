@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <title>WebOasis - URL Encode/Decode</title>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/url.js"></script>
+	<link href="bootstrap.min.css" rel="stylesheet">
+	<style>
+		legend {
+			background:#0078d4;
+			color: #FFFFFF !important;
+		}
+		a {
+			color: #FFFFFF !important;
+		}
+	</style>
+</head>
+<body ng-app>
+    <div ng-controller="AppController">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend><a href="../">URL Encode/Decode</a></legend>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">URL</label>
+                    <div class="col-lg-6">
+                        <textarea class="form-control" rows="6" id="URLForm" ng-model="URL" placeholder="URL"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Decode URL</label>
+                    <div class="col-lg-6">
+                        <textarea class="form-control" rows="6" id="decodedURL-text" placeholder="Decode URL" readonly>{{decodeURL()}}</textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Encode URL</label>
+                    <div class="col-lg-6">
+                        <textarea class="form-control" rows="6" id="encodedURL-text" placeholder="Encode URL" readonly>{{encodeURL()}}</textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WebOas.is - FAQ</title>
+		<link rel="stylesheet" type="text/css" href="style.min.css" />
+		<script defer src="faq.min.js"></script>
+		<script defer src="search.min.js"></script>
+	</head>
+	<body class="background">
+		<div class="container" style="margin-top:1em">
+			<form>
+				<button 
+					style="margin-right:0.1em"
+					class="btn btn-primary pull-right excluded"
+					formaction="../">Back</button>
+			</form>
+			<button id="expand"
+				class="btn btn-primary pull-right excluded" 
+				onClick="listExpansion()">Expand
+			</button>
+			<input type="text" 
+				id="searchInput" 
+					class="excluded" 
+					placeholder="Search..."
+					onkeyup="searchFilter()">
+			<button 
+				id="clearSearch"
+				style="margin-left:0"
+				class="btn btn-primary pull-left excluded"
+				onclick="clearSearch()">Clear
+			</button>
+			<div class="panel-group" id="accordion" style="margin-top:0.1em">
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" id="collapseOasis1">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								What is WebOasis?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis1" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">All-in-One Web Portal For Internet & Tech Enthusiasts Who Love Exploring & Learning About The Digital Underground.</li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis2">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								What is this site based on?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis2" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">The site is originally based on a start page made by <a href="https://tacoanon.github.io" target="_blank">TacoAnon</a></li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis3">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								How can I have WebOasis launch on every new tab I open?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis3" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">Chrome and Firefox cannot do this by default, however addons are available to accomplish this: <a href="https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/" target="_blank">Firefox</a> | <a href="https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna" target="_blank">Chrome</a></li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis4">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								Does WebOasis have any secret hidden menus or pages?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis4" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">Yes, If you are reading this, Congrats! You are one of the few people who actually read our FAQ page!</li>
+								<li class="black">Pressing the SHIFT + Delete keys together while on the WebOasis homepage will open up a hidden menu for porn links.</li>
+								<li class="black">Pressing the SHIFT + PageUp keys together while on the WebOasis homepage will open up a hidden menu for private website links.</li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis5">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								What features, updates, and ideas do you have planned for WebOas.is?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis5" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">Create Custom Search Engine Using <a href="https://asciimoo.github.io/searx/" target="_blank">SearX</a> or 
+								<a href="https://github.com/benbusby/whoogle-search" target="_blank">Whoogle</a> or 
+								<a href="https://gitlab.e.foundation/e/cloud/my-spot" target="_blank">Spot</a> or 
+								<a href="https://yacy.net" target="_blank">YaCy</a> or 
+								<a href="https://github.com/thunderra1n/Ellpedia" target="_blank">Ellpedia</a> or
+								<a href="https://github.com/NikolaiT/scrapeulous" target="_blank">Scrapeulous</a></li>
+								<li class="black">Optimize Site For 4k & Mobile (Future)</li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis6">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								What is your privacy policy? Do you keep logs? What data do you store?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis6" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">All logs are deleted after 24 hours.</li>
+								<li class="black">We do NOT record or keep track of any of your searches. We serve no ads, we have no tracking scripts, we have no analytics software.</li>
+								<li class="black">Any cookies we store in your browser is for your benefit of remembering your custom settings. It has nothing to do with tracking.</li>
+								<li class="black">The site is primarily made from just HTML, CSS, and JavaScript. We only store data that is absolutely crucial for site function.</li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis7">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								What should I do if the page doesn't load correctly or there are dead links?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis7" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">Please report all issues on our Forum. We will do our best to help you and solve the issue or bug.</li>
+								<li class="black">To fix most issues with WebOasis, Please clear all cookies and cache from your web browser then restart your browser.</li>
+								<li class="black">You also want to click the "Reset All To Default" button located in the upper left popout menu on the homepage of WebOasis.</li>
+								<li class="black">This forces your browser to delete all cookies, cache, & localstorage related to WebOasis and re-download everything from our server.</li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis8">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								How often do you add new links or remove broken links?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis8" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black">We try to do this at least once per week.</li>
+								<li class="black">If you see no changes, clear your browser's cache and click the "Reset All To Default" button in the left popout menu on WebOasis.</li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOasis9">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								Does WebOasis have its own App for the Chat?
+							</h4>
+						</div>
+					</a>
+				</div>
+				<div class="toggleAnswer panel">
+					<div id="collapseOasis9" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="bullet-height">
+								<li class="black"><a href="https://rocket.chat/install" target="_blank">RocketChat Homepage</a></li>
+								<li class="black"><a href="https://github.com/RocketChat/Rocket.Chat.Electron/releases" target="_blank">RocketChat Clients on GitHub (Windows, MacOS, Linux)</a></li>
+								<li class="black"><a href="https://play.google.com/store/apps/details?id=chat.rocket.android" target="_blank">Android</a></li>
+								<li class="black"><a href="https://apps.apple.com/app/rocket-chat/id1148741252" target="_blank">Apple iOS</a></li>
+								<li class="black"><a href="https://rocket.chat/docs/user-guides/" target="_blank">More Chat Help</a></li>
+								<li class="black"><a href="https://chat.weboasis.app" target="_blank">WebOasis Chat Server</a></li>
+							</ul>
+						<button id="copybutton" class="sharebtn" onclick="copyLink(this)">
+								<img src="./share.svg"/>
+							</button><p class="mouseover" style="display:none">Copy</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

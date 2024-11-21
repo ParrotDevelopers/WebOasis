@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="PasswordApp">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Use our online Strong Password Generator to create a secure and safe passwords instantly free that is secure and difficult to crack or guess.">
+	<title>WebOas.is - Password Generator</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.min.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+	<link rel="apple-touch-icon-precomposed" href="img/favicon.png" />
+	<script src="js/clipboard.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+	<a href="https://WebOas.is"><img src="img/logo.png" alt="Logo"></a>
+</div>
+<div class="container" data-ng-controller="PasswordAppController">
+<div class="row">
+	<div class="col-md-12">
+		<div class="widgets box">
+			<div class="box-head w-bh"><h3 class="text-center">Password Generator</h3></div>
+				<form class="widgets-form" role="form">
+				<div class="row">
+				<div class="col-md-4"><label>Password Length:</label></div>
+				<div class="col-md-8">     
+                            <input type="range" class="range" min="6" max="50" step="1" value="12" data-ng-model="passwordLength"><span class="range-slider__value">{{passwordLength}}</span> 
+                        </div>
+				</div>
+				<div class="row">
+				<div class="col-md-4"><label>Include Symbols:</label></div>
+				<div class="col-md-8">
+				<label class="checkbox-inline"><input type="checkbox" data-ng-model="addSymbols"> (e.g. @#$%)</label>
+				</div>
+				</div>
+				<div class="row">
+				<div class="col-md-4"><label>Include Numbers:</label></div>
+				<div class="col-md-8">
+					<label class="checkbox-inline"><input type="checkbox" data-ng-model="addNumbers"> (e.g. 123456)</label>
+				</div>
+				</div>
+				<div class="row">
+				<div class="col-md-4"><label>Include Uppercase Characters:</label></div>
+				<div class="col-md-6">
+					<label class="checkbox-inline"><input type="checkbox" data-ng-model="addUpper"> (e.g. ABCDEF)</label>
+				</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-left">
+						<button type="button" class="btn btn-primary btn-lg w-btn" name="submit" id="load" data-ng-click="createPassword()">Generate</button>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-md-1 result-label">Password:</div>
+					<div class="col-md-7">
+						<div data-ng-model="password" id="password">
+                         <input type="text" class="form-control" data-ng-model="password" id="password1" placeholder="Generated Password Will Appear Here">	
+                       </div>
+					</div>
+					<div class="com-md-1 copy"><button type="button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#password1"><span>Copy Password</span></button></div>
+				</div>
+				</form>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="description box">
+			<div class="box-head d-bh"><h3 class="text-center">About</h3></div>
+			<div class="d-content">
+			<p>This password generator is a completely free online password generating tool. The highly secure passwords that you create are NOT stored anywhere. The passwords are generated clientside in your browser only using javascript. No information is collected using this generator.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="description box">
+			<div class="box-head d-bh"><h3 class="text-center">Advice</h3></div>
+			<div class="d-content">
+			<ol>
+<li>We suggest using passwords that are 15 characters or longer.</li>
+<li>Never use words in the dictionary as any part of your password.</li>
+<li>Make sure your email is safe and secure with an incredibly strong and unique password.</li>
+<li>Don't use truthful answers that people can guess or Google for the forgot your password reset questions.</li>
+<li>Databreaches happen nearly every day now. Every website you visit should have its own unique password.</li>
+<li>We suggest using password manager software to help you keep track of your unique passwords.<br><br><b>Password Manager Examples</b><br>
+<a href="https://keepass.info" target="_blank">KeePass</a><br>
+<a href="https://keepassxc.org" target="_blank">KeePassXC</a><br>
+<a href="https://keeweb.info" target="_blank">KeeWeb</a><br>
+<a href="https://bitwarden.com" target="_blank">Bitwarden</a><br>
+<a href="https://psono.com" target="_blank">Psono</a><br>
+<a href="https://www.passbolt.com" target="_blank">Passbolt</a><br>
+<a href="https://www.lastpass.com" target="_blank">LastPass</a><br>
+<a href="https://www.dashlane.com" target="_blank">Dashlane</a></li>
+			</ol>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script src="js/bootstrap.min.js"></script>
+<script>
+        $(document).ready(function(){
+          $("#load").on('click', function(){
+          	 var $this = $(this);
+			  $this.button('loading');
+			    setTimeout(function() {
+			       $this.button('reset');
+			   }, 500);
+          });
+        });
+      var clipboard = new ClipboardJS('.btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+        </script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+        <script src="js/application.js"></script>
+</body>
+</html>

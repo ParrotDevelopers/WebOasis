@@ -1,0 +1,256 @@
+body{
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #303030;
+    background-color: #f8fafb;
+}
+a:hover{
+    text-decoration: none;
+}
+.section-currencies-table td{
+    font-size: 13px;
+    vertical-align: middle!important;
+}
+.section-currencies-table td.flag{
+    text-align: center;
+}
+
+.select-wrap {
+    display:block;
+    margin-top:5px;
+}
+.support-title{
+    margin: 50px 0px;
+}
+
+#section-ads{
+    margin-top:50px;
+}
+
+#section-ads img{
+    width:100%;
+}
+.header{
+    background: url(../img/header5-bg.png) no-repeat center center;
+    background-position: bottom;
+    height: 600px;
+}
+.converter {
+    padding-top: 120px;
+    width: 75%;
+    margin: auto;
+}
+.converter h1 {
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+.converter h2{
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+}
+.convert-box {
+    position: relative;
+    background-color: #fff;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.input-wrap{
+    width: 27%;
+    float: left;
+}
+.input-wrap .form-control {
+    box-shadow: none;
+    border-radius: 0;
+    height: 48px;
+    border: 1px solid #eee;
+    border-right: 0;
+    padding: 0 5px;
+    text-align: center;
+}
+label.label {
+    color: #626161; 
+    text-align: center; 
+    display: block; 
+    font-size: 16px; 
+    margin-bottom: 10px;
+}
+th.caption-col {
+    background-color: #7e7cf2 !important;
+    color: #fff;
+}
+table {
+    background-color: #ffffff;
+
+}
+.table-responsive{
+    -webkit-box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.05);
+}
+.table>thead>tr>th {
+    padding: 12px 8px;
+}
+footer{
+    background: url(../img/footer.png) no-repeat center center;
+    background-position: top;
+    height: 220px;
+    margin-top: 70px;
+}
+.footer-social{
+    margin-bottom: 20px;
+}
+footer .footer-social ul li a {
+    display: block;
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(248, 250, 251, 0.42);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding-top: 16px;
+}
+.footer{
+    padding-top: 60px;
+    color: #fff;
+}
+p.copyright {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+}
+p.copyright a{
+    color: #fff;
+}
+p.copyright i{
+    color: red;
+}
+.list-currencies {
+    padding: 40px 0;
+}
+.list-currencies h2 {
+    margin: 40px 0;
+    font-size: 40px;
+    text-transform: capitalize;
+}
+
+@media (max-width: 768px){				
+    .converter {
+        padding-top: 40px;
+        width: 90%;
+        margin: auto;
+    }	
+    .converter h1 {
+        font-size: 30px;
+    }
+    .converter h2 {
+        font-size: 22px;
+    }
+    .convert-box {
+        padding: 20px;
+        margin-top: 40px;
+    }
+    .exchange-btn {
+        margin-bottom: 20px;
+    }
+}
+.dropdown.bootstrap-select.bs-select.form-control{
+    width: 73% !important;
+    display: inline-block;
+    position: relative;
+    float: left;
+    height: 48px;
+}
+button.btn.dropdown-toggle.btn-light {
+    background-color: #f7f7f7 !important;
+    height: 48px;
+    border: 1px solid #eee;
+    border-left: 0;
+    box-shadow: none;
+    width: 100% !important;
+    border-radius: 0;
+}
+button.btn.dropdown-toggle.btn-light:focus, button.btn.dropdown-toggle.btn-light:active{
+    outline: none !important;
+}
+.bootstrap-select > select {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    display: block !important;
+    width: 0.5px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    border: none;
+    width: 100% !important;
+}
+.dropdown-menu{
+    width: 100%;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    right: 0;
+}
+.currency_name {
+    color: #aaa;
+    display: block;
+    overflow: hidden;
+    font-weight: normal;
+    line-height: 1.4em;
+    font-size: 85%
+}
+span.currency_code {
+    color: #03A9F4;
+    font-weight: bold;
+}
+.flag {
+    vertical-align: middle;
+    float: left;
+    margin-right: 5px;
+    max-width: 64px;
+    width: 32px;
+}
+a.dropdown-item {
+    border-bottom: 1px solid #dedede;
+    background-color: #f9f9f9;
+}
+.bs-searchbox input.form-control {
+    border: 1px solid #dedede;
+    box-shadow: none;
+    margin-bottom: 10px !important;
+    border-radius: 0;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
+    background-color: #7e7cf2;
+    outline: none;
+}
+.dropdown-menu>.active>a span.currency_code,
+.dropdown-menu>.active>a span.currency_name
+{
+    color: #fff !important;
+}
+span.text {
+    width: 100%;
+}
+.dropdown-menu>li>a{
+    padding: 5px 10px;
+}
+.exchange-btn {
+    background: #7e7cf2 !important;
+    color: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.07);
+}
+.exchange-btn:focus{
+    outline: none;
+}
