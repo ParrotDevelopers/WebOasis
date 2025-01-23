@@ -1106,7 +1106,6 @@ let defaultLinkMenu = {
 };
 let hiddenLinksOne = [
 	["PrivateSpreadsheet", "https://hdvinnie.github.io/Private-Trackers-Spreadsheet/"],
-	["BlackPearl", "https://blackpearl.biz"],
 	["EBookShares", "https://ebooks-shares.org"],
     ["IntoTheInternet", "https://intotheinter.net"],
 	["SilentGround", "https://www.silentground.org"],
