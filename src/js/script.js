@@ -1127,7 +1127,7 @@ let hiddenLinksOne = [
     ["NotWhatCD", "https://notwhat.cd"],
     ["Orpheus", "https://orpheus.network"],
     ["PassThePopcorn", "https://passthepopcorn.me"],
-    ["Redacted", "https://redacted.ch"],
+    ["Redacted", "https://redacted.sh"],
     ["TheGeeks", "https://thegeeks.click"],
     ["ThePirateSociety", "https://thepiratesociety.org/forums/"],
 ];
